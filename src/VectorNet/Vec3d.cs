@@ -224,6 +224,15 @@ namespace VectorNet
             => Math.Sqrt(vector * vector);
 
         /// <summary>
+        /// Transforms the vector to have a given length.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <param name="length">The desired length.</param>
+        /// <returns>The given vector transformed to have the given length.</returns>
+        public static Vec3d Resize(Vec3d vector, double length)
+            => vector.Unit() * length;
+
+        /// <summary>
         /// Gets the unit vector of the given vector.
         /// </summary>
         /// <param name="vector">The vector to get the unit vector for.</param>
@@ -278,6 +287,14 @@ namespace VectorNet
         /// <returns>The resulting cross product.</returns>
         public Vec3d CrossProduct(Vec3d other)
             => CrossProduct(this, other);
+
+        /// <summary>
+        /// Transforms the vector to have the desired length.
+        /// </summary>
+        /// <param name="length">The desired length.</param>
+        /// <returns>The vector transformed to have the desired length.</returns>
+        public Vec3d Resize(double length)
+            => Resize(this, length);
 
         /// <summary>
         /// Gets the unit vector of this vector.

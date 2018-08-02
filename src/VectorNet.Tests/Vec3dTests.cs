@@ -116,6 +116,13 @@ namespace VectorNet.Tests
             => AssertThat(new Vec3d(13, 0, 0).Length).IsEqualTo(13);
 
         /// <summary>
+        /// Checks that we can correctly set the length of a vector.
+        /// </summary>
+        [Fact]
+        public void ResizeTest()
+            => AssertThat(new Vec3d(1, 0, 0).Resize(20.5)).IsEqualTo(new Vec3d(20.5, 0, 0));
+
+        /// <summary>
         /// Checks if the found unit vector is correct.
         /// </summary>
         [Fact]
