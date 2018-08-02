@@ -41,6 +41,21 @@
         T Length { get; }
 
         /// <summary>
+        /// Gets the value at the given index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns>The value at the index.</returns>
+        T GetValue(int index);
+
+        /// <summary>
+        /// Sets the value at the given index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>A new vector with the value at the index changed.</returns>
+        TVec SetValue(int index, T value);
+
+        /// <summary>
         /// Adds the given vector to the current vector.
         /// </summary>
         /// <param name="other">The other vector.</param>

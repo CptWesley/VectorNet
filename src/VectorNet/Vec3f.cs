@@ -45,6 +45,19 @@ namespace VectorNet
         public float Length => LengthOf(this);
 
         /// <summary>
+        /// Gets the value at the specified index.
+        /// </summary>
+        /// <value>
+        /// The value.
+        /// </value>
+        /// <param name="i">The index.</param>
+        /// <returns>The value at the index.</returns>
+        public float this[int i]
+        {
+            get => GetValue(i);
+        }
+
+        /// <summary>
         /// Performs an explicit conversion from <see cref="Vec3d"/> to <see cref="Vec3f"/>.
         /// </summary>
         /// <param name="vector">The vector to convert.</param>
@@ -227,6 +240,30 @@ namespace VectorNet
         /// <returns>A copy of the original vector.</returns>
         public static Vec3f Copy(Vec3f vector)
             => new Vec3f(vector);
+
+        /// <inheritdoc/>
+        public float GetValue(int index)
+        {
+            switch (index)
+            {
+                case 0: return X;
+                case 1: return Y;
+                case 2: return Z;
+                default: throw new IndexOutOfRangeException();
+            }
+        }
+
+        /// <inheritdoc/>
+        public Vec3f SetValue(int index, float value)
+        {
+            switch (index)
+            {
+                case 0: return new Vec3f(value, Y, Z);
+                case 1: return new Vec3f(X, value, Z);
+                case 2: return new Vec3f(X, Y, value);
+                default: throw new IndexOutOfRangeException();
+            }
+        }
 
         /// <inheritdoc/>
         public Vec3f Add(Vec3f other)

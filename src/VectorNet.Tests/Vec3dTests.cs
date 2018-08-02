@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 using static AssertNet.Xunit.Assertions;
 
@@ -138,5 +139,31 @@ namespace VectorNet.Tests
         [Fact]
         public void FromVec3fTest()
             => AssertThat(new Vec3d(new Vec3f(1, 1, 1))).IsEqualTo(_v);
+
+        /// <summary>
+        /// Checks that the GetValue method returns the right values.
+        /// </summary>
+        [Fact]
+        public void GetValueTest()
+        {
+            Vec3f v = new Vec3f(1, 2, 3);
+            AssertThat(v[0]).IsEqualTo(1);
+            AssertThat(v[1]).IsEqualTo(2);
+            AssertThat(v[2]).IsEqualTo(3);
+            AssertThat(() => v.GetValue(3)).ThrowsExactlyException<IndexOutOfRangeException>();
+        }
+
+        /// <summary>
+        /// Checks that the SetValue method returns the right values.
+        /// </summary>
+        [Fact]
+        public void SetValueTest()
+        {
+            Vec3f v = new Vec3f(0, 0, 0);
+            AssertThat(v.SetValue(0, 1)).IsEqualTo(new Vec3f(1, 0, 0));
+            AssertThat(v.SetValue(1, 1)).IsEqualTo(new Vec3f(0, 1, 0));
+            AssertThat(v.SetValue(2, 1)).IsEqualTo(new Vec3f(0, 0, 1));
+            AssertThat(() => v.SetValue(3, 1)).ThrowsExactlyException<IndexOutOfRangeException>();
+        }
     }
 }
