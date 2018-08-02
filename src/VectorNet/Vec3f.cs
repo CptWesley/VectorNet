@@ -6,7 +6,7 @@ namespace VectorNet
     /// Class representing a 3-dimensional vector of floats.
     /// </summary>
     /// <seealso cref="IEquatable{Vec3f}" />
-    public struct Vec3f : IEquatable<Vec3f>
+    public struct Vec3f : IVec3<Vec3f, float>, IEquatable<Vec3f>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Vec3f"/> struct.
@@ -32,36 +32,16 @@ namespace VectorNet
             Z = vector.Z;
         }
 
-        /// <summary>
-        /// Gets the x-axis value.
-        /// </summary>
-        /// <value>
-        /// The x-axis value.
-        /// </value>
+        /// <inheritdoc/>
         public float X { get; }
 
-        /// <summary>
-        /// Gets the y-axis value.
-        /// </summary>
-        /// <value>
-        /// The y-axis value.
-        /// </value>
+        /// <inheritdoc/>
         public float Y { get; }
 
-        /// <summary>
-        /// Gets the z-axis value.
-        /// </summary>
-        /// <value>
-        /// The z-axis value.
-        /// </value>
+        /// <inheritdoc/>
         public float Z { get; }
 
-        /// <summary>
-        /// Gets the length of the vector.
-        /// </summary>
-        /// <value>
-        /// The length of the vector.
-        /// </value>
+        /// <inheritdoc/>
         public float Length => LengthOf(this);
 
         /// <summary>
@@ -248,65 +228,35 @@ namespace VectorNet
         public static Vec3f Copy(Vec3f vector)
             => new Vec3f(vector);
 
-        /// <summary>
-        /// Adds the given vector to the current vector.
-        /// </summary>
-        /// <param name="other">The other vector.</param>
-        /// <returns>The resulting vector.</returns>
+        /// <inheritdoc/>
         public Vec3f Add(Vec3f other)
             => Add(this, other);
 
-        /// <summary>
-        /// Subtracts the given vector from the current vector.
-        /// </summary>
-        /// <param name="other">The other vector.</param>
-        /// <returns>The resulting vector.</returns>
+        /// <inheritdoc/>
         public Vec3f Subtract(Vec3f other)
             => Subtract(this, other);
 
-        /// <summary>
-        /// Scales the vector by a given scalar.
-        /// </summary>
-        /// <param name="scalar">The scalar.</param>
-        /// <returns>The scaled vector.</returns>
+        /// <inheritdoc/>
         public Vec3f Scale(float scalar)
             => Scale(this, scalar);
 
-        /// <summary>
-        /// Calculates the dot product between this vector and another vector.
-        /// </summary>
-        /// <param name="other">The other vector..</param>
-        /// <returns>The dot product of the two vectors.</returns>
+        /// <inheritdoc/>
         public float DotProduct(Vec3f other)
             => DotProduct(this, other);
 
-        /// <summary>
-        /// Calculates the cross product of this vector and another vector.
-        /// </summary>
-        /// <param name="other">The other vector.</param>
-        /// <returns>The resulting cross product.</returns>
+        /// <inheritdoc/>
         public Vec3f CrossProduct(Vec3f other)
             => CrossProduct(this, other);
 
-        /// <summary>
-        /// Transforms the vector to have the desired length.
-        /// </summary>
-        /// <param name="length">The desired length.</param>
-        /// <returns>The vector transformed to have the desired length.</returns>
+        /// <inheritdoc/>
         public Vec3f Resize(float length)
             => Resize(this, length);
 
-        /// <summary>
-        /// Gets the unit vector of this vector.
-        /// </summary>
-        /// <returns>The unit vector of this vector.</returns>
+        /// <inheritdoc/>
         public Vec3f Unit()
             => Unit(this);
 
-        /// <summary>
-        /// Copies this instance.
-        /// </summary>
-        /// <returns>A copy of this instance.</returns>
+        /// <inheritdoc/>
         public Vec3f Copy()
             => Copy(this);
 

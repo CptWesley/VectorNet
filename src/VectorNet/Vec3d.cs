@@ -6,7 +6,7 @@ namespace VectorNet
     /// Class representing a 3-dimensional vector of doubles.
     /// </summary>
     /// <seealso cref="IEquatable{Vec3d}" />
-    public struct Vec3d : IEquatable<Vec3d>
+    public struct Vec3d : IVec3<Vec3d, double>, IEquatable<Vec3d>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Vec3d"/> struct.
@@ -32,36 +32,16 @@ namespace VectorNet
             Z = vector.Z;
         }
 
-        /// <summary>
-        /// Gets the x-axis value.
-        /// </summary>
-        /// <value>
-        /// The x-axis value.
-        /// </value>
+        /// <inheritdoc/>
         public double X { get; }
 
-        /// <summary>
-        /// Gets the y-axis value.
-        /// </summary>
-        /// <value>
-        /// The y-axis value.
-        /// </value>
+        /// <inheritdoc/>
         public double Y { get; }
 
-        /// <summary>
-        /// Gets the z-axis value.
-        /// </summary>
-        /// <value>
-        /// The z-axis value.
-        /// </value>
+        /// <inheritdoc/>
         public double Z { get; }
 
-        /// <summary>
-        /// Gets the length of the vector.
-        /// </summary>
-        /// <value>
-        /// The length of the vector.
-        /// </value>
+        /// <inheritdoc/>
         public double Length => LengthOf(this);
 
         /// <summary>
@@ -248,65 +228,35 @@ namespace VectorNet
         public static Vec3d Copy(Vec3d vector)
             => new Vec3d(vector);
 
-        /// <summary>
-        /// Adds the given vector to the current vector.
-        /// </summary>
-        /// <param name="other">The other vector.</param>
-        /// <returns>The resulting vector.</returns>
+        /// <inheritdoc/>
         public Vec3d Add(Vec3d other)
             => Add(this, other);
 
-        /// <summary>
-        /// Subtracts the given vector from the current vector.
-        /// </summary>
-        /// <param name="other">The other vector.</param>
-        /// <returns>The resulting vector.</returns>
+        /// <inheritdoc/>
         public Vec3d Subtract(Vec3d other)
             => Subtract(this, other);
 
-        /// <summary>
-        /// Scales the vector by a given scalar.
-        /// </summary>
-        /// <param name="scalar">The scalar.</param>
-        /// <returns>The scaled vector.</returns>
+        /// <inheritdoc/>
         public Vec3d Scale(double scalar)
             => Scale(this, scalar);
 
-        /// <summary>
-        /// Calculates the dot product between this vector and another vector.
-        /// </summary>
-        /// <param name="other">The other vector..</param>
-        /// <returns>The dot product of the two vectors.</returns>
+        /// <inheritdoc/>
         public double DotProduct(Vec3d other)
             => DotProduct(this, other);
 
-        /// <summary>
-        /// Calculates the cross product of this vector and another vector.
-        /// </summary>
-        /// <param name="other">The other vector.</param>
-        /// <returns>The resulting cross product.</returns>
+        /// <inheritdoc/>
         public Vec3d CrossProduct(Vec3d other)
             => CrossProduct(this, other);
 
-        /// <summary>
-        /// Transforms the vector to have the desired length.
-        /// </summary>
-        /// <param name="length">The desired length.</param>
-        /// <returns>The vector transformed to have the desired length.</returns>
+        /// <inheritdoc/>
         public Vec3d Resize(double length)
             => Resize(this, length);
 
-        /// <summary>
-        /// Gets the unit vector of this vector.
-        /// </summary>
-        /// <returns>The unit vector of this vector.</returns>
+        /// <inheritdoc/>
         public Vec3d Unit()
             => Unit(this);
 
-        /// <summary>
-        /// Copies this instance.
-        /// </summary>
-        /// <returns>A copy of this instance.</returns>
+        /// <inheritdoc/>
         public Vec3d Copy()
             => Copy(this);
 
