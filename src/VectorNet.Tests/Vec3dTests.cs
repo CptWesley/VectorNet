@@ -28,6 +28,7 @@ namespace VectorNet.Tests
         public void EqualsCopyTest()
         {
             AssertThat(_v).IsEqualTo(_v.Copy());
+            AssertThat(_v == _v.Copy()).IsTrue();
             AssertThat(_v.GetHashCode()).IsEqualTo(_v.Copy().GetHashCode());
         }
 
@@ -36,7 +37,10 @@ namespace VectorNet.Tests
         /// </summary>
         [Fact]
         public void DoesNotEqualNullTest()
-            => AssertThat(_v).IsNotEqualTo(null);
+        {
+            AssertThat(_v).IsNotEqualTo(null);
+            AssertThat(_v != null).IsTrue();
+        }
 
         /// <summary>
         /// Checks that a vector is not considered equal when the x-axis value differs.
