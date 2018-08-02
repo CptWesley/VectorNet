@@ -241,6 +241,15 @@ namespace VectorNet
         public static Vec3d Copy(Vec3d vector)
             => new Vec3d(vector);
 
+        /// <summary>
+        /// Applies the selector on each value of the vector.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <param name="selector">The selector.</param>
+        /// <returns>A modified vector with the selector applied.</returns>
+        public static Vec3d Apply(Vec3d vector, Func<double, double> selector)
+            => new Vec3d(selector.Invoke(vector.X), selector.Invoke(vector.Y), selector.Invoke(vector.Z));
+
         /// <inheritdoc/>
         public double GetValue(int index)
         {
@@ -296,6 +305,10 @@ namespace VectorNet
         /// <inheritdoc/>
         public Vec3d Copy()
             => Copy(this);
+
+        /// <inheritdoc/>
+        public Vec3d Apply(Func<double, double> selector)
+            => Apply(this, selector);
 
         /// <summary>
         /// Determines whether the specified <see cref="object" />, is equal to this instance.

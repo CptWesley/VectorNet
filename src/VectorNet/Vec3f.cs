@@ -241,6 +241,15 @@ namespace VectorNet
         public static Vec3f Copy(Vec3f vector)
             => new Vec3f(vector);
 
+        /// <summary>
+        /// Applies the selector on each value of the vector.
+        /// </summary>
+        /// <param name="vector">The vector.</param>
+        /// <param name="selector">The selector.</param>
+        /// <returns>A modified vector with the selector applied.</returns>
+        public static Vec3f Apply(Vec3f vector, Func<float, float> selector)
+            => new Vec3f(selector.Invoke(vector.X), selector.Invoke(vector.Y), selector.Invoke(vector.Z));
+
         /// <inheritdoc/>
         public float GetValue(int index)
         {
@@ -296,6 +305,10 @@ namespace VectorNet
         /// <inheritdoc/>
         public Vec3f Copy()
             => Copy(this);
+
+        /// <inheritdoc/>
+        public Vec3f Apply(Func<float, float> selector)
+            => Apply(this, selector);
 
         /// <summary>
         /// Determines whether the specified <see cref="object" />, is equal to this instance.

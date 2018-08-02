@@ -1,4 +1,6 @@
-﻿namespace VectorNet
+﻿using System;
+
+namespace VectorNet
 {
     /// <summary>
     /// Interface for three dimensional vectors.
@@ -108,5 +110,12 @@
         /// </summary>
         /// <returns>A copy of this instance.</returns>
         TVec Copy();
+
+        /// <summary>
+        /// Applies the specified selector on each value.
+        /// </summary>
+        /// <param name="selector">The selector.</param>
+        /// <returns>A new vector with the values modified by the selector.</returns>
+        TVec Apply(Func<T, T> selector);
     }
 }

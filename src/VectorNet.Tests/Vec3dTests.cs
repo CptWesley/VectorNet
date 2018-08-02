@@ -165,5 +165,12 @@ namespace VectorNet.Tests
             AssertThat(v.SetValue(2, 1)).IsEqualTo(new Vec3f(0, 0, 1));
             AssertThat(() => v.SetValue(3, 1)).ThrowsExactlyException<IndexOutOfRangeException>();
         }
+
+        /// <summary>
+        /// Checks that the Apply function functions correctly.
+        /// </summary>
+        [Fact]
+        public void ApplyTest()
+            => AssertThat(_v.Apply(x => x + 2)).IsEqualTo(new Vec3d(3, 3, 3));
     }
 }
