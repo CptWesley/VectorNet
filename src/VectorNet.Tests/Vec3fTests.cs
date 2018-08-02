@@ -116,9 +116,13 @@ namespace VectorNet.Tests
         /// </summary>
         [Fact]
         public void UnitTest()
-        {
-            AssertThat(new Vec3f(100, 0, 0).Unit()).IsEqualTo(new Vec3f(1, 0, 0));
-            AssertThat(new Vec3f(1, 2, 3).Unit().Length).IsEqualTo(1);
-        }
+            => AssertThat(new Vec3f(100, 0, 0).Unit()).IsEqualTo(new Vec3f(1, 0, 0));
+
+        /// <summary>
+        /// Checks that the explicit conversion from <see cref="Vec3d"/> to <see cref="Vec3f"/> works correctly.
+        /// </summary>
+        [Fact]
+        public void FromVec3dTest()
+            => AssertThat((Vec3f)new Vec3d(1, 2, 3)).IsEqualTo(new Vec3f(1, 2, 3));
     }
 }

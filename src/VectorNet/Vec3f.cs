@@ -65,6 +65,16 @@ namespace VectorNet
         public float Length => LengthOf(this);
 
         /// <summary>
+        /// Performs an explicit conversion from <see cref="Vec3d"/> to <see cref="Vec3f"/>.
+        /// </summary>
+        /// <param name="vector">The vector to convert.</param>
+        /// <returns>
+        /// The result of the conversion.
+        /// </returns>
+        public static explicit operator Vec3f(Vec3d vector)
+            => new Vec3f((float)vector.X, (float)vector.Y, (float)vector.Z);
+
+        /// <summary>
         /// Implements the '==' operator.
         /// </summary>
         /// <param name="left">The left side of the operation.</param>
