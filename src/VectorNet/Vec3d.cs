@@ -32,16 +32,36 @@ namespace VectorNet
             Z = vector.Z;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the x-axis value.
+        /// </summary>
+        /// <value>
+        /// The x-axis value.
+        /// </value>
         public double X { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the y-axis value.
+        /// </summary>
+        /// <value>
+        /// The y-axis value.
+        /// </value>
         public double Y { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the z-axis value.
+        /// </summary>
+        /// <value>
+        /// The z-axis value.
+        /// </value>
         public double Z { get; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the length of the vector.
+        /// </summary>
+        /// <value>
+        /// The length of the vector.
+        /// </value>
         public double Length => LengthOf(this);
 
         /// <summary>
@@ -250,7 +270,14 @@ namespace VectorNet
         public static Vec3d Apply(Vec3d vector, Func<double, double> selector)
             => new Vec3d(selector.Invoke(vector.X), selector.Invoke(vector.Y), selector.Invoke(vector.Z));
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the value at the given index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns>
+        /// The value at the index.
+        /// </returns>
+        /// <exception cref="IndexOutOfRangeException">Thrown when the index is not in range [0,2].</exception>
         public double GetValue(int index)
         {
             switch (index)
@@ -262,7 +289,15 @@ namespace VectorNet
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Sets the value at the given index.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        /// A new vector with the value at the index changed.
+        /// </returns>
+        /// <exception cref="IndexOutOfRangeException">Thrown when the index is not in range [0,2].</exception>
         public Vec3d SetValue(int index, double value)
         {
             switch (index)
@@ -274,43 +309,101 @@ namespace VectorNet
             }
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Adds the given vector to the current vector.
+        /// </summary>
+        /// <param name="other">The other vector.</param>
+        /// <returns>
+        /// The resulting vector.
+        /// </returns>
         public Vec3d Add(Vec3d other)
             => Add(this, other);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Subtracts the given vector from the current vector.
+        /// </summary>
+        /// <param name="other">The other vector.</param>
+        /// <returns>
+        /// The resulting vector.
+        /// </returns>
         public Vec3d Subtract(Vec3d other)
             => Subtract(this, other);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Scales the vector by a given scalar.
+        /// </summary>
+        /// <param name="scalar">The scalar.</param>
+        /// <returns>
+        /// The scaled vector.
+        /// </returns>
         public Vec3d Scale(double scalar)
             => Scale(this, scalar);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Calculates the dot product between this vector and another vector.
+        /// </summary>
+        /// <param name="other">The other vector..</param>
+        /// <returns>
+        /// The dot product of the two vectors.
+        /// </returns>
         public double DotProduct(Vec3d other)
             => DotProduct(this, other);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Calculates the cross product of this vector and another vector.
+        /// </summary>
+        /// <param name="other">The other vector.</param>
+        /// <returns>
+        /// The resulting cross product.
+        /// </returns>
         public Vec3d CrossProduct(Vec3d other)
             => CrossProduct(this, other);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Transforms the vector to have the desired length.
+        /// </summary>
+        /// <param name="length">The desired length.</param>
+        /// <returns>
+        /// The vector transformed to have the desired length.
+        /// </returns>
         public Vec3d Resize(double length)
             => Resize(this, length);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Gets the unit vector of this vector.
+        /// </summary>
+        /// <returns>
+        /// The unit vector of this vector.
+        /// </returns>
         public Vec3d Unit()
             => Unit(this);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Copies this instance.
+        /// </summary>
+        /// <returns>
+        /// A copy of this instance.
+        /// </returns>
         public Vec3d Copy()
             => Copy(this);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Applies the specified selector on each value.
+        /// </summary>
+        /// <param name="selector">The selector.</param>
+        /// <returns>
+        /// A new vector with the values modified by the selector.
+        /// </returns>
         public Vec3d Apply(Func<double, double> selector)
             => Apply(this, selector);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Determines whether the specified <see cref="object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             if (obj is Vec3d other)
@@ -321,15 +414,31 @@ namespace VectorNet
             return false;
         }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.
+        /// </returns>
         public bool Equals(Vec3d other)
             => this.X == other.X && this.Y == other.Y && this.Z == other.Z;
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// </returns>
         public override int GetHashCode()
             => X.GetHashCode() * 2 * Y.GetHashCode() * 4 * Z.GetHashCode();
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Returns a <see cref="string" /> that represents this instance.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string" /> that represents this instance.
+        /// </returns>
         public override string ToString()
             => $"<{X}, {Y}, {Z}>";
     }
