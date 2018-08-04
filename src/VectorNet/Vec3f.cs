@@ -310,13 +310,7 @@ namespace VectorNet
         public Vec3f Apply(Func<float, float> selector)
             => Apply(this, selector);
 
-        /// <summary>
-        /// Determines whether the specified <see cref="object" />, is equal to this instance.
-        /// </summary>
-        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
-        /// <returns>
-        ///   <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
-        /// </returns>
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             if (obj is Vec3f other)
@@ -327,23 +321,16 @@ namespace VectorNet
             return false;
         }
 
-        /// <summary>
-        /// Indicates whether the current object is equal to another object of the same type.
-        /// </summary>
-        /// <param name="other">An object to compare with this object.</param>
-        /// <returns>
-        /// true if the current object is equal to the <paramref name="other">other</paramref> parameter; otherwise, false.
-        /// </returns>
+        /// <inheritdoc/>
         public bool Equals(Vec3f other)
             => this.X == other.X && this.Y == other.Y && this.Z == other.Z;
 
-        /// <summary>
-        /// Returns a hash code for this instance.
-        /// </summary>
-        /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
-        /// </returns>
+        /// <inheritdoc/>
         public override int GetHashCode()
             => X.GetHashCode() * 2 * Y.GetHashCode() * 4 * Z.GetHashCode();
+
+        /// <inheritdoc/>
+        public override string ToString()
+            => $"<{X}, {Y}, {Z}>";
     }
 }

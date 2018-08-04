@@ -169,5 +169,12 @@ namespace VectorNet.Tests
         [Fact]
         public void ApplyTest()
             => AssertThat(_v.Apply(x => x + 2)).IsEqualTo(new Vec3f(3, 3, 3));
+
+        /// <summary>
+        /// Checks that we can correctly obtain the string version of the vector.
+        /// </summary>
+        [Fact]
+        public void ToStringTest()
+            => AssertThat(_v.ToString()).IsEqualTo("<1, 1, 1>");
     }
 }
